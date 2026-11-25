@@ -1,0 +1,28 @@
+name: Atualizar UT1-UTC (IERS)
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # todo dia, 06:17 UTC
+  workflow_dispatch:        # permite rodar manualmente
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gerar ut1.json
+        run: python3 scripts/gerar_ut1.py
+      - name: Publicar se mudou
+        run: |
+          if [ -n "$(git status --porcelain ut1.json)" ]; then
+            git config user.name "navast-bot"
+            git config user.email "navast-bot@users.noreply.github.com"
+            git add ut1.json
+            git commit -m "UT1-UTC atualizado"
+            git push
+          else
+            echo "Nada a publicar."
+          fi
