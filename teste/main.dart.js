@@ -84720,7 +84720,7 @@ $1(a){var s=a*60,r=B.e.a6(s,1),q=s<0&&r!=="-0.0"?"\u2212":""
 return q+A.jw(r,"-","")+"'"},
 $S:83}
 A.ajC.prototype={
-$1(a){return B.e.a6(a,1)+"' ("+A.K("aprox",this.a.e,B.f)+" "+B.e.aA(a*1852)+" m)"},
+$1(a){return B.e.a6(a,2)+"' ("+A.K("aprox",this.a.e,B.f)+" "+B.e.aA(a*1852)+" m)"},
 $S:83}
 A.ajr.prototype={
 $1(a){return this.a.a1(new A.ajq(this.b,a))},
